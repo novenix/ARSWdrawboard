@@ -31,23 +31,16 @@ public class Memory {
     public void restart() {
         draws.clear();
     }
-    public HashMap createColor(){
-        HashMap color = new HashMap<String,Integer>(); ;
 
-        color.put("r", (int)Math.floor(Math.random()*253+1));
-        color.put("g", (int) Math.floor(Math.random()*253+1));
-        color.put("b", (int)Math.floor(Math.random()*253+1));
-        return color;
-    }
-    public HashMap getUserSession(String name) {
-        HashMap color = createColor();
+    public Colors getUserSession(String name) {
+
         for (UserSession u : users) {
             if (u.getUserName().equals(name)) {
-                color = u.getUserColor();
-                break;
+                return  u.getUserColor();
+
             }
         }
-
+        Colors color = new Colors();
         return color;
     }
 

@@ -21,16 +21,12 @@ public class WhiteBoardAppController
     public void resetBoard(){
         Memory.getInstance().restart();
     }
-    @PostMapping("/point")
+    @PostMapping("/draw")
     public void savePoints(@RequestBody List<Integer> draw){
         Memory.getInstance().addDraw(draw);
     }
-    @GetMapping("/point")
-    public List<List<Integer>> getDraws (){
-        return Memory.getInstance().getDraws();
-    }
     @GetMapping("/getusercolor")
-    public HashMap getColorSession(){
+    public Colors getColorSession(){
         String name = (String )request.getSession().getAttribute("name");
         return Memory.getInstance().getUserSession(name);
     }

@@ -6,11 +6,11 @@ function setup() {
 
 function draw() {
     if (mouseIsPressed === true) {
-        var color = axios.get('/sessioncolor').then( color => {
+        var color = axios.get('/getusercolor').then( color => {
             fill(color.data.r, color.data.g ,color.data.b );
             ellipse(mouseX, mouseY, 20, 20);
             var point = [mouseX, mouseY, color.data.r, color.data.g ,color.data.b ];
-
+            axios.post('/draw', point);
         });
     }
     if (mouseIsPressed === false) {
@@ -19,7 +19,7 @@ function draw() {
 }
 
 function refresh(){
-    var points = axios.get('/point').then(points => {
+    var points = axios.get('/draw').then(points => {
         clear();
         if (points.data != null) {
             for (var i = 0; i < points.data.length; i++) {
@@ -29,14 +29,14 @@ function refresh(){
         }
     });
 }
-setInterval(refresh, 1000);
+setInterval(refresh, 500);
 
-function restart() {
+function limpiar() {
     clear();
-    axios.post('/restart');
+    axios.post('/reset');
 }
 
-function registro() {
-    var x = document.getElementById("inputText").value;
+function guardar() {
+    var x = document.getElementById("userName").value;
     axios.get('/setname?name=' + x);
 }

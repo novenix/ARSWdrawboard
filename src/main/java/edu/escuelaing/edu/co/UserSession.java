@@ -3,27 +3,25 @@ package edu.escuelaing.edu.co;
 import java.util.HashMap;
 
 public class UserSession {
-    private int r;
-    private int g;
-    private int b;
+
     private String name;
 
-    HashMap<String,Integer > color = new HashMap<String,Integer>();
+    Colors color = new Colors();
     public UserSession(String name){
+        this.color = new Colors();
         this.name = name;
-        this.r = (int) Math.floor(Math.random()*250);
-        this.g = (int)Math.floor(Math.random()*250);
-        this.r = (int)Math.floor(Math.random()*250);
-        color.put("r", r);
-        color.put("g", g);
-        color.put("b", b);
+
 
     }
-    public HashMap getUserColor() {
+    public Colors getUserColor() {
 
         return color;
     }
 
+
+    public void setUserColor(Colors color) {
+        this.color = color;
+    }
 
     public String getUserName() {
         return name;
