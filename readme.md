@@ -1,4 +1,4 @@
-# Threads
+# DRAWBOARD
 ## Server running heroku
 ![image](img/draw.PNG)
 
